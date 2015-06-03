@@ -1,0 +1,155 @@
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Varela Round', sans-serif;
+}
+
+body {
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+#prev, #next {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #aaa;
+  background-color: #dca;
+  color: white;
+  z-index: 10;
+  font-size: 40px;
+  line-height: 45px;
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#prev:hover, #next:hover {
+  background-color: #ba9;
+  border: 1px solid #999;
+}
+
+#navigation {
+  width: 800px;
+  position: relative;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+}
+
+#prev {
+  left: 0px;
+}
+
+#next {
+  right: 0px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.zoomContainer {
+  @extend .container;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.zoomViewport {
+  @extend .container;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+
+.item1 {
+  background-color: #ff9812;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 300px;
+  height: 200px;
+
+}
+
+.item2 {
+  background-color: #ffee62;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ffee62;
+}
+
+.item3 {
+  background-color: #f9e88c;
+  position: absolute;
+  top: 0px;
+  right: 100px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f9e88c;
+  -webkit-transform: rotate(10deg) translate(0px, 0px);
+  -moz-transform: rotate(10deg) translate(0px, 0px);
+  -o-transform: rotate(10deg) translate(0px, 0px);
+}
+
+.item3b {
+  background-color: #ffc413;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 100px;
+  border: 1px solid ffc413;
+  -webkit-transform: rotate(10deg) translate(200px, 200px);
+  -moz-transform: rotate(10deg) translate(200px, 200px);
+  -o-transform: rotate(10deg) translate(200px, 200px);
+}
+
+.item2b {
+  background-color: #ff9c4e;
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid ff9c4e;
+}
+
+.item4 {
+  background-color: #ffc;
+  position: absolute;
+  bottom: 320px;
+  left: 150px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid yellow;
+  -webkit-transform: rotate(27deg) skew(28deg);
+  -moz-transform: rotate(30deg) skew(20deg);
+  -o-transform: rotate(30deg) skew(20deg);
+}
+
+
+
+@import "print";
