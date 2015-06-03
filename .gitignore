@@ -5,4 +5,5 @@ node_modules/
 bower_components/
 *.log
 dist/
+flickr.json
 
