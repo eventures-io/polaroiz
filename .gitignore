@@ -1,7 +1,8 @@
 .idea
-node_modules
-dist
 .tmp
 .sass-cache
-bower_components
-plugins
+node_modules/
+bower_components/
+*.log
+dist/
+
