@@ -4,18 +4,20 @@
  *
  */
 angular
-    .module('bfSite', [
+    .module('polaroiz', [
         'ngAnimate',
         'ngSanitize',
-        'ngNewRouter'
-        //'ngTouch'
-    ]).config(function ($locationProvider) {
-        $locationProvider.html5Mode(true);
-    } )
-    .controller('MainController', function ($router) {
-        $router.config([
-//            { path: '/', redirectTo: '/home' },
-            { path: '/', component: 'home' },
-            { path: '/about', component: 'about' }
-        ]);
+        'ngRoute',
+        //'ngTouch',
+        'restangular'
+
+    ]).config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainController'
+      })
+     .otherwise({
+        redirectTo: '/'
+      });
     });

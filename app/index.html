@@ -18,56 +18,36 @@
     <!-- endbuild -->
     <base href="/">
 </head>
-<body ng-app="bfSite" ng-controller='MainController as main'>
+<body ng-app="polaroiz" ng-controller='MainController'>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<!--  site content -->
-<!--<div>-->
-                <!--<ul class="pure-menu-list">-->
-                    <!--<li class="pure-menu-item"><a ng-link="home" class="pure-menu-link">Main</a></li>-->
-                    <!--<li class="pure-menu-item"><a ng-link="about" class="pure-menu-link">About</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-
 <div class="container">
-    <ng-viewport></ng-viewport>
+    <ng-view></ng-view>
 </div>
-
-<!-- end site content-->
-
-
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-<!--<script>-->
-<!--!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){-->
-<!--(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),-->
-<!--r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)-->
-<!--}(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
-
-<!--ga('create', 'UA-XXXXX-X');-->
-<!--ga('send', 'pageview');-->
-<!--</script>-->
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="bower_components/zoomooz/jquery.zoomooz.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
 <script src="node_modules/angular-new-router/dist/router.es5.js"></script>
 <!-- injector:js -->
 <script src="app.js"></script>
-<script src="components/about/about.js"></script>
-<script src="components/home/home.js"></script>
-<script src="components/zoom-target.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/zoom-target.js"></script>
 <!-- endinjector -->
 <!-- endbuild -->
 </body>
