@@ -25,7 +25,7 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q) {
 
                 if (data.stat === 'ok') {
                     angular.forEach(data.photoset.photo, function (value, key) {
-                        var url = 'https://farm' + value.farm + '.staticflickr.com/' + value.server + '/' + value.id + '_' + value.secret + '_m.jpg';
+                        var url = 'https://farm' + value.farm + '.staticflickr.com/' + value.server + '/' + value.id + '_' + value.secret + '_b.jpg';
                         this.push(new Picture(value.id, value.title, url, data.photoset.owner, data.photoset.ownerName));
                     }, result)
 

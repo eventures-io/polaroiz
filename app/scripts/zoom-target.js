@@ -17,8 +17,12 @@ angular.module('polaroiz').directive('zoomTarget', function () {
             element.addClass('zoomTarget');
 
             element.css('position', 'absolute');
-            element.css('left', getRandomInt(0, 1280) + 'px');
-            element.css('top', getRandomInt(0, 600) + 'px');
+
+            var width = $( document ).width() - 200;
+            element.css('left', getRandomInt(170, width) + 'px');
+
+            var height = ($( document ).height() * 90 /100) - 200;
+            element.css('top', getRandomInt(80, height) + 'px');
 
             var rotation = getRandomInt(-90, 90);
             element.css('-webkit-transform', 'rotate(' + rotation + 'deg)');
@@ -31,9 +35,13 @@ angular.module('polaroiz').directive('zoomTarget', function () {
         },
         controller: function ($scope, $element) {
             $scope.click = function () {
-                $element.zoomTo({targetsize: 0.7});
+                if($element.css('z-index') !== '2'){
                 $('.polaroid-outer').not(this).css({'z-index': 1});
                 $element.css('z-index', 2);
+                }
+                else {
+                    alert('on top');
+                }
             };
         }
     };
