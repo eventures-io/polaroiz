@@ -310,7 +310,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'tempApp',
+        module: 'polaroiz',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -387,27 +387,21 @@ module.exports = function (grunt) {
         connectCommits: false,
         message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
       },
-      heroku: {
-        options: {
-          remote: 'heroku',
-          branch: 'master'
+        heroku: {
+            options: {
+                remote: 'git@heroku.com:polaroiz.git',
+                branch: 'master'
+            }
         }
-      },
-      openshift: {
-        options: {
-          remote: 'openshift',
-          branch: 'master'
-        }
-      }
     },
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'sass',
+        'sass'
       ],
       test: [
-        'sass',
+        'sass'
       ],
       debug: {
         tasks: [
@@ -658,6 +652,11 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
+
+    grunt.registerTask('deploy', [
+        'build',
+        'buildcontrol:heroku'
+    ]);
 
   grunt.registerTask('default', [
     'newer:jshint',
