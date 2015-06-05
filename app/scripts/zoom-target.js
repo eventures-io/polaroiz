@@ -40,7 +40,7 @@ angular.module('polaroiz').directive('zoomTarget', function () {
                 $element.css('z-index', 2);
                 }
                 else {
-                    alert('on top');
+                    //alert('on top');
                 }
             };
         }

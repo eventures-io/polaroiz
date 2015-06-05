@@ -27,17 +27,6 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: appConfig,
 
-        babel: {
-            options: {
-                sourceMap: true
-            },
-            dist: {
-                files: {
-                    '<%= yeoman.app %>/scripts/es5/test.js': '<%= yeoman.app %>/scripts/es6/test.js'
-                }
-            }
-        },
-
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             bower: {
@@ -128,6 +117,24 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+        buildcontrol: {
+            options: {
+                dir: 'dist',
+                commit: true,
+                push: true,
+                connectCommits: false,
+                message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+            },
+            heroku: {
+                options: {
+                    remote: 'git@heroku.com:polaroiz.git',
+                    branch: 'master'
+                }
+            },
+            
+        },
+
 
         // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
@@ -514,6 +521,11 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'htmlmin'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'build',
+        'buildcontrol:heroku'
     ]);
 
     grunt.registerTask('default', [
