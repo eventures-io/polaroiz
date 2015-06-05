@@ -18,11 +18,21 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
-  "jasmine": true,
   "globals": {
-    "angular": false,
-    "browser": false,
-    "inject": false
+    "jQuery": true,
+    "angular": true,
+    "console": true,
+    "$": true,
+    "_": true,
+    "moment": true,
+    "describe": true,
+    "beforeEach": true,
+    "module": true,
+    "inject": true,
+    "it": true,
+    "expect": true,
+    "browser": true,
+    "element": true,
+    "by": true
   }
 }
-

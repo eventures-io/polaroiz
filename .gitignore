@@ -1,9 +1,8 @@
-.idea
+node_modules
+public
 .tmp
 .sass-cache
-node_modules/
-bower_components/
-*.log
-dist/
-flickr.json
-
+.idea
+client/bower_components
+dist
+/server/config/local.env.js
