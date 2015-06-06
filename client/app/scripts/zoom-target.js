@@ -9,7 +9,7 @@ angular.module('polaroiz').directive('zoomTarget', function () {
     return {
         restrict: 'E',
         replace: true,
-        template: '<div class="polaroid-outer" ng-click="click()"><div class="polaroid-inner"></div></div>',
+        template: '<div class="polaroid-outer" ng-click="click()"><div class="polaroid-inner"><div class="overlay"><p>{{picture.comment}}</p></div></div></div></div>',
         scope: {
         },
         link: function (scope, element, attrs) {
@@ -18,6 +18,8 @@ angular.module('polaroiz').directive('zoomTarget', function () {
             element.css('position', 'absolute');
 
             var picture = scope.$eval(attrs.content);
+            scope.picture = picture;
+
             var img = $('<img class="polaroid-image">').attr('src', picture.url)
                 .load(function () {
                     element.css('height', this.naturalHeight / 4);
@@ -42,17 +44,22 @@ angular.module('polaroiz').directive('zoomTarget', function () {
         controller: function ($scope, $element, $log) {
 
             var handlerIn =  function() {
-                $log.debug('mouse enter');
+                var imgHeight = $element.find('img').css('height');
+                var overlay = $element.find('.overlay');
+                overlay.css('height', imgHeight);
+                overlay.addClass('overlay-visible');
             }
 
             var handlerOut =  function() {
-                $log.debug('mouse leave');
+                $element.find('.overlay').removeClass('overlay-visible');
             }
 
             $scope.click = function () {
                 if ($element.css('z-index') !== '2') {
-                    $('.polaroid-outer').not(this).css({'z-index': 1});
-                    $('.polaroid-outer').not(this).mouseenter(null).mouseleave(null);
+                    var outer = $('.polaroid-outer').not(this);
+                    outer.css({'z-index': 1});
+                    outer.unbind("mouseenter");
+                    outer.unbind("mouseleave");
                     $element.css('z-index', 2);
                     $element.mouseenter( handlerIn ).mouseleave( handlerOut );
                 }

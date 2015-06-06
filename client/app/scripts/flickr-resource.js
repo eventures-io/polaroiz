@@ -65,7 +65,7 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
                 if (data.stat === 'ok' && data.photos.photo.length > 0) {
                     angular.forEach(data.photos.photo, function (value) {
 
-                        this.push(new Picture(value.id, value.title, getUrl(value), value.owner, null, value._comment));
+                        this.push(new Picture(value.id, value.title, getUrl(value), value.owner, null, value.comment._content));
 
                     }, result);
 
