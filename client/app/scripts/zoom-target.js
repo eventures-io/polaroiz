@@ -15,22 +15,44 @@ angular.module('polaroiz').directive('zoomTarget', function () {
         link: function (scope, element, attrs) {
             element.zoomTarget();
             element.addClass('zoomTarget');
-
             element.css('position', 'absolute');
 
-            var width = $( document ).width() - 200;
-            element.css('left', getRandomInt(170, width) + 'px');
+//    var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+//    img.attr('src', responseObject.imgurl);
+//    img.appendTo('#imagediv');
 
-            var height = ($( document ).height() * 90 /100) - 200;
-            element.css('top', getRandomInt(80, height) + 'px');
+//    myImage.addEventListener('onload', function() {
+//        console.log('My width is: ', this.naturalWidth);
+//        console.log('My height is: ', this.naturalHeight);
+//    });
+                var picture = scope.$eval(attrs.content);
+                var img = $('<img class="polaroid-image">').attr('src', picture.url)
+                    .load(function() {
+                        //$log.debug(this.naturalWidth +  ' ' + this.naturalHeight)
+                        element.css('height', this.naturalHeight / 4);
+                        element.css('width',this.naturalWith / 4);
 
-            var rotation = getRandomInt(-90, 90);
-            element.css('-webkit-transform', 'rotate(' + rotation + 'deg)');
-            element.css('-moz-transform', 'rotate(' + rotation + 'deg)');
-            element.css('-o-transform', 'rotate(' + rotation + 'deg)');
+                        var viewWith = $( document ).width() - 200;
+                        element.css('left', getRandomInt(170, viewWith) + 'px');
 
-            var picture = scope.$eval(attrs.content);
-            element.find('.polaroid-inner').append('<img src="' + picture.url + '" class="polaroid-image">');
+                        var viewHeight = ($( document ).height() * 90 /100) - 200;
+                        element.css('top', getRandomInt(80, viewHeight) + 'px');
+
+                        var rotation = getRandomInt(-90, 90);
+                        element.css('-webkit-transform', 'rotate(' + rotation + 'deg)');
+                        element.css('-moz-transform', 'rotate(' + rotation + 'deg)');
+                        element.css('-o-transform', 'rotate(' + rotation + 'deg)');
+
+                        element.find('.polaroid-inner').append(this);
+
+
+                    });
+
+
+
+
+
+
 
         },
         controller: function ($scope, $element) {

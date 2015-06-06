@@ -3,7 +3,11 @@
 angular.module('polaroiz')
     .controller('MainController', function ($scope, FlickrResource) {
 
-        FlickrResource.findPictures().then(function (data) {
+//        FlickrResource.loadPicturesFromPhotoSet('72157642179604694').then(function (data) {
+//            $scope.pictures = data;
+//        });
+
+        FlickrResource.loadPicturesFromGallery('66911286-72157648727697471').then(function (data) {
             $scope.pictures = data;
         });
 
