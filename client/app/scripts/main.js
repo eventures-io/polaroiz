@@ -16,9 +16,5 @@ angular.module('polaroiz')
 
         });
 
-        if($scope.last) {
-        $rootScope.$broadcast('images_loaded');
-        }
-
     });
 

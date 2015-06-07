@@ -55,12 +55,13 @@ angular.module('polaroiz').directive('zoomTarget', function () {
             };
 
             $scope.$on('reset_overlay', function() {
-                unbindMouseListeners();
+                $element.unbind('mouseenter');
+                $element.unbind('mouseleave');
             });
 
 
             var unbindMouseListeners = function () {
-                var outer = $('.polaroid-outer');
+                var outer = $('.polaroid-outer').not(this);
                 outer.unbind('mouseenter');
                 outer.unbind('mouseleave');
             };
