@@ -1,10 +1,9 @@
-<div class="zoomViewport">
-    <div id="container" class="zoomContainer">
-        <zoom-target content='{{picture}}' ng-repeat='picture in pictures'></zoom-target>
+<div class="zoomViewport" >
+    <div id="container" class="zoomContainer" ng-click=reset()>
+        <zoom-target picture='{{picture}}' ng-repeat='picture in pictures' repeat-end></zoom-target>
     </div>
 
-        <!--<div id="prev" class="zoomButton" data-type="prev" data-root=".zoomViewport">&lt;</div>-->
-        <!--<div id="next" class="zoomButton" data-type="next" data-root=".zoomViewport">&gt;</div>-->
+    <loop-buttons></loop-buttons>
 
 </div>
 

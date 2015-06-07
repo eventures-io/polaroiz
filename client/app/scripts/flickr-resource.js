@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 //72157642179604694
 angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) {
@@ -9,7 +9,7 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
             this.url = url ,
             this.owner = owner,
             this.ownerName = ownerName,
-            this.comment = comment
+            this.comment = comment;
     };
 
     var logError = function (message, deferred) {
@@ -41,9 +41,9 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
                 } else {
                     logError('No pictures received', deferred);
                 }
-                deferred.resolve(result)
+                deferred.resolve(result);
             }).
-            error(function (data, status, headers, config) {
+            error(function (data, status /*, headers, config*/) {
                 logError(status, deferred);
             });
 
@@ -52,9 +52,9 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
     };
 
     //66911286-72157648727697471
-    var loadPicturesFromGallery = function (gallery_id) {
+    var loadPicturesFromGallery = function (galleryId) {
 
-        var query = '&method=flickr.galleries.getPhotos&gallery_id=' + gallery_id;
+        var query = '&method=flickr.galleries.getPhotos&gallery_id=' + galleryId;
         var deferred = $q.defer();
 
         $http.get(url + query).
@@ -72,9 +72,9 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
                 } else {
                     logError('No pictures received', deferred);
                 }
-                deferred.resolve(result)
+                deferred.resolve(result);
             }).
-            error(function (data, status, headers, config) {
+            error(function (data, status) {
                 logError(status, deferred);
             });
 
@@ -87,4 +87,4 @@ angular.module('polaroiz').factory('FlickrResource', function ($http, $q, $log) 
 
     };
 
-})
+});

@@ -9,7 +9,7 @@ angular.module('polaroiz').directive('zoomTarget', function () {
     return {
         restrict: 'E',
         replace: true,
-        template: '<div class="polaroid-outer" ng-click="click()"><div class="polaroid-inner"><div class="overlay"><p>{{picture.comment}}</p></div></div></div></div>',
+        templateUrl: 'app/views/zoom-target.html',
         scope: {
         },
         link: function (scope, element, attrs) {
@@ -17,10 +17,10 @@ angular.module('polaroiz').directive('zoomTarget', function () {
             element.addClass('zoomTarget');
             element.css('position', 'absolute');
 
-            var picture = scope.$eval(attrs.content);
-            scope.picture = picture;
+            //somehow @picture binds to a String, not an Object
+            scope.picture = scope.$eval(attrs.picture);
 
-            var img = $('<img class="polaroid-image">').attr('src', picture.url)
+            $('<img class="polaroid-image">').attr('src', scope.picture.url)
                 .load(function () {
                     element.css('height', this.naturalHeight / 4);
                     element.css('width', this.naturalWith / 4);
@@ -41,29 +41,37 @@ angular.module('polaroiz').directive('zoomTarget', function () {
                 });
 
         },
-        controller: function ($scope, $element, $log) {
+        controller: function ($scope, $element) {
 
             var handlerIn =  function() {
                 var imgHeight = $element.find('img').css('height');
                 var overlay = $element.find('.overlay');
                 overlay.css('height', imgHeight);
                 overlay.addClass('overlay-visible');
-            }
+            };
 
             var handlerOut =  function() {
                 $element.find('.overlay').removeClass('overlay-visible');
-            }
+            };
+
+            $scope.$on('reset_overlay', function() {
+                unbindMouseListeners();
+            });
+
+
+            var unbindMouseListeners = function () {
+                var outer = $('.polaroid-outer');
+                outer.unbind('mouseenter');
+                outer.unbind('mouseleave');
+            };
 
             $scope.click = function () {
                 if ($element.css('z-index') !== '2') {
-                    var outer = $('.polaroid-outer').not(this);
-                    outer.css({'z-index': 1});
-                    outer.unbind("mouseenter");
-                    outer.unbind("mouseleave");
+                    unbindMouseListeners();
+                    $('.polaroid-outer').not(this).css({'z-index': 1});
                     $element.css('z-index', 2);
                     $element.mouseenter( handlerIn ).mouseleave( handlerOut );
                 }
-
             };
         }
     };
