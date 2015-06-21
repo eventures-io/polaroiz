@@ -7,17 +7,21 @@ angular
     .module('polaroiz', [
         'ngAnimate',
         'ngSanitize',
-        'ngRoute'
+        'ngRoute',
+        'evtrs.loader'
 
-    ]).config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'app/views/main.html',
-        controller: 'MainController'
-      })
-     .otherwise({
-        redirectTo: '/'
-      });
+    ]).config(function ($routeProvider, $locationProvider, $httpProvider) {
 
-    $locationProvider.html5Mode(true);
-  });
+        $httpProvider.interceptors.push('HttpRequestInterceptor');
+
+        $routeProvider
+            .when('/', {
+                templateUrl: 'app/views/main.html',
+                controller: 'MainController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+
+        $locationProvider.html5Mode(true);
+    }).constant('LoaderConfig', {API_ENDPOINT: 'flickr.com'});

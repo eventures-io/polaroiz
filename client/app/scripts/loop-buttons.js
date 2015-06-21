@@ -5,13 +5,14 @@ angular.module('polaroiz').directive('loopButtons', function () {
     return {
         restrict: 'E',
         templateUrl: 'app/views/loop-buttons.html',
-        controller: function ($scope) {
+        controller: function ($scope, $element) {
 
             var pictureElements = [];
             var index = 0;
 
             $scope.$on('images_loaded', function () {
                 pictureElements = $('.polaroid-outer');
+                $element.find('.loop-buttons').css('visibility' , 'visible');
             });
 
             $scope.next = function () {

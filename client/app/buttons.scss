@@ -1,25 +1,28 @@
 @charset "UTF-8";
 
 .loop-buttons {
+  visibility: hidden;
   position: fixed;
-  bottom: 50px;
-  left: 0px;
+  bottom: 1.5em;
+  left: calc(50% - 150px);
   z-index: 4;
-  font-size: xx-large;
-  width:100vw;
+  font-size: 3em;
+  width:300px;
+  opacity: 0.6;
+  transition: visiblity 1s ease;
 }
 
 .back-button {
   position: absolute;
   top: 0;
-  left: 40%;
+  left: 0;
   cursor: pointer;
 }
 
 .forward-button {
   position: absolute;
   top: 0;
-  right: 40%;
+  right: 0;
   cursor: pointer;
 }
 

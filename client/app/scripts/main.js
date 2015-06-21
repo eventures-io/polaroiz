@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('polaroiz')
-    .controller('MainController', function ($scope, FlickrResource, $rootScope) {
+    .controller('MainController', function ($scope, FlickrResource) {
 
         $scope.reset = function() {
             $scope.$broadcast('reset_overlay');
