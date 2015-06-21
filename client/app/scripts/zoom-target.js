@@ -37,6 +37,7 @@ angular.module('polaroiz').directive('zoomTarget', function () {
                     element.css('-o-transform', 'rotate(' + rotation + 'deg)');
 
                     element.find('.polaroid-inner').append(this);
+                    element.css('opacity', 1);
 
                 });
 
